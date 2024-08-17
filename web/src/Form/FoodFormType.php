@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\Length;
 
 class FoodFormType extends AbstractType
 {
@@ -20,7 +21,15 @@ class FoodFormType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => "Nom : ",
-                'attr' => ['class' => 'ml-1 input bg-white border-gray-500']
+                'attr' => ['class' => 'ml-1 input bg-white border-gray-500'],
+                'constraints' => [
+                    new Length([
+                        'min' => 2,
+                        'max' => 125,
+                        'minMessage' => 'Le nom doit contenir au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Le nom ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
+                ],
             ])
             ->add('quantity', NumberType::class, [
                 'label' => 'Quantité : ',
@@ -29,7 +38,7 @@ class FoodFormType extends AbstractType
                     new Range([
                         'min' => 0,
                         'max' => 100,
-                        'notInRangeMessage' => 'La quantité doit être au dessus 0 et en dessous de 100'
+                        'notInRangeMessage' => 'La quantité doit être au dessus de 0 et en dessous de 100',
                     ]),
                 ],
             ])
