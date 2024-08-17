@@ -49,7 +49,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['class' => 'ml-1 input bg-white border-gray-500 mt-5', 'autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Notre application est sécurisée, ajouté un mot de passe !',
+                        'message' => 'Notre application est sécurisée, ajoutez un mot de passe !',
                     ]),
                     new Length([
                         'min' => 6,
