@@ -113,7 +113,7 @@ class RecipeController extends AbstractController
                 $legacyFoodFormArr[$i] = $foodForm;
                 $i += 1;
             }
-            $this->addFlash('warning', 'Des aliments de votre recettes ont le même nom, la fonctionnalité d\'identification des aliments n\'est pas encore disponible. Vous devez supprimer les doublons à la main !');
+            $this->addFlash('warning', 'Des aliments de votre recettes ont peut-être le même nom, la fonctionnalité d\'identification des aliments n\'est pas encore disponible. Vous devez supprimer les doublons à la main !');
             return $this->render('recipe/index.html.twig', [
                 'recipe' => $recipe,
                 'number' => $number,
