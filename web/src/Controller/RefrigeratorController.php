@@ -67,6 +67,9 @@ class RefrigeratorController extends AbstractController
                 $entityManager->flush();
                 $this->addFlash('success', 'Vous avez modifié votre Frigo (' . $refrigerator->getName() . ' anciennment ' . $legacyName . ')');
                 return $this->redirectToRoute("app_refrigerator", ['number' => $number]);
+            }else if($refrigeratorForm->isSubmitted() && !$refrigeratorForm->isValid()){
+                $this->addFlash('error', 'Vous ne pouvez pas nommer votre frigo ainsi !');
+                $refrigerator->setName($legacyName);
             }
 
             // if ($request->query->has('force_delete') && $request->query->get('force_delete') == "true" &&
