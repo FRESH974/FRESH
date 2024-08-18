@@ -22,7 +22,7 @@ class FoodRecipeNotInRefrigerator
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $unit = null;
 
-    #[ORM\ManyToOne(targetEntity: Recipe::class, inversedBy: 'foodRecipeNotInRefrigerators')]
+    #[ORM\ManyToOne(targetEntity: Recipe::class, cascade: ["PERSIST"], inversedBy: 'foodRecipeNotInRefrigerators')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Recipe $recipe = null;
 
